@@ -1,13 +1,5 @@
 import React, {useRef, useState} from 'react';
-import {
-  View,
-  StyleSheet,
-  Dimensions,
-  Pressable,
-  Modal,
-  Text,
-  ActivityIndicator,
-} from 'react-native';
+import { View, StyleSheet, Dimensions, Pressable, Modal, Text, ActivityIndicator } from 'react-native';
 
 import {
   getModel,
@@ -19,11 +11,10 @@ import {cropPicture} from '../helpers/image.helper';
 import {Camera} from 'expo-camera';
 
 
-export default function Sembolutani  ({ navigation }){
 
-const RESULT_MAPPING = ['unlem', 'yanici', 'asidik' , 'cevreyezararli' , 'solunum'];
+const RESULT_MAPPING = ['Saglik Tehlikesi' , 'Yanici', 'Asindirici' , 'Cevreye Zararli' , 'Ciddi Saglik Tehlikesi'];
 
-const Main = () => {
+const Sembolutani = () => {
   const cameraRef = useRef();
   const [isProcessing, setIsProcessing] = useState(false);
   const [presentedShape, setPresentedShape] = useState('');
@@ -128,4 +119,4 @@ const styles = StyleSheet.create({
   },
 });
     
-}
+export default Sembolutani;

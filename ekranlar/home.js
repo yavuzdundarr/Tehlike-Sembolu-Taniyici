@@ -17,8 +17,7 @@ const localimage =  require ('../Images/arka.png');
 
 export default function Home ({ navigation }) {
 
-
-  
+ 
 const [myBoolean, setMyBoolean] = useState(false);
 const isFocused = useIsFocused();
 
@@ -36,8 +35,6 @@ const toggleSes = async () => {
   await AsyncStorage.setItem('sesAcik', newValue.toString());
 };
 
-
-  
   
   handlePlaySound = async () => {
     const soundObj = new Audio.Sound()
@@ -60,12 +57,6 @@ const toggleSes = async () => {
   }
 }
   
-  
-
-
-
-
-  
   const { t, i18n } = useTranslation();
   const selectLanguageCode = i18n.language;
 
@@ -81,10 +72,10 @@ const toggleSes = async () => {
     
     <View style={styles.ustyazi}>
      <LinearGradient  
-     colors={['red', 'pink']}
+     colors={['#485996', '#391e5d']}
      style= {styles.background1}
      start={{x: 0.5, y: 0 }}
-     end={{x: 0.5, y: 1}}
+     end={{x: 0.5, y: 1.5}}
      />
       <Text style = {styles.ustyazitext}>{t('common:ustyazitext')}</Text>
    </View> 
@@ -103,7 +94,7 @@ const toggleSes = async () => {
       <Text style={styles.boldText1}>{t('common:boldText1')} </Text>
       </TouchableOpacity>
 
-    <TouchableOpacity style={styles.page2} onPress={() => {navigation.navigate('Hakkinda');
+    <TouchableOpacity style={styles.page2} onPress={() => {navigation.navigate('Semboller');
     if (myBoolean) {
       this.handlePlaySound();}
 
@@ -147,14 +138,16 @@ const styles = StyleSheet.create({
 
   },
   ustyazi: {
-    top: 30,
+    top: 25,
     padding: 20,
     marginHorizontal: 30,
     
   },
   background1: {
-   borderRadius:20,
-   height: 100,
+   borderWidth: 6,
+   borderColor: '#391e5d',
+   borderRadius:60,
+   height: 120,
    alignItems: 'center',
    position: 'absolute',
    top: 40,
@@ -164,11 +157,12 @@ const styles = StyleSheet.create({
   },
 
   ustyazitext: {
-    top: 55,
+    top: 60,
     fontWeight: 'bold',
     textAlign: 'center',
+    color: 'white',
     textAlignVertical: 'center',
-    fontSize: 22,
+    fontSize: 27,
   },
   page1: {
     textAlignVertical: 'center',
@@ -179,7 +173,9 @@ const styles = StyleSheet.create({
     borderRadius:20,
   },
   background2: {
-    borderRadius:20,
+    borderWidth: 6,
+    borderColor: '#391e5d',
+    borderRadius:60,
     height: 100,
     alignItems: 'center',
     position: 'absolute',
@@ -189,8 +185,10 @@ const styles = StyleSheet.create({
     bottom: 0,
    },
   boldText1: {
+    color: 'white',
     fontWeight: 'bold',
     textAlign: 'center',
+    bottom:5,
     fontSize: 22,
   },
   page2: {
@@ -202,7 +200,9 @@ const styles = StyleSheet.create({
     borderRadius:20,
   },
   background3: {
-    borderRadius:20,
+    borderWidth: 6,
+    borderColor: '#391e5d',
+    borderRadius:60,
     height: 100,
     alignItems: 'center',
     position: 'absolute',
@@ -212,7 +212,9 @@ const styles = StyleSheet.create({
     bottom: 0,
    },
   boldText2: {
+    color: 'white',
     fontWeight: 'bold',
+    bottom:5,
     textAlign: 'center',
     fontSize: 22,
   },
@@ -225,7 +227,9 @@ const styles = StyleSheet.create({
     borderRadius:20,
     },
     background4: {
-      borderRadius:20,
+      borderWidth: 6,
+      borderColor: '#391e5d',
+      borderRadius:60,
       height: 100,
       alignItems: 'center',
       position: 'absolute',
@@ -235,8 +239,10 @@ const styles = StyleSheet.create({
       bottom: 0,
      },
   boldText3: {
+    color: 'white',
     fontSize: 22,
     fontWeight: 'bold',
+    bottom:5,
     textAlign: 'center',
     textAlignVertical: 'center',
 }

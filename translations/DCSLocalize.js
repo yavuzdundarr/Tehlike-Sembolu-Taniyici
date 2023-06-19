@@ -3,9 +3,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
  initReactI18next
 } from 'react-i18next';
-import * as RNLocalize from 'expo-localization';
+import * as Localization from 'expo-localization';
 import en from './en';
 import tr from './tr';
+
 const LANGUAGES = {
  en,
  tr,
@@ -19,19 +20,18 @@ const LANGUAGE_DETECTOR = {
  async: true,
  detect: callback => {
   AsyncStorage.getItem('user-language', (err, language) => {
-   if (err || !language) {
-    if (err) {
-     console.log('Error fetching Languages from asyncstorage ', err);
-    } else {
-     console.log('No language is set, choosing English as fallback');
+    if (err || !language) {
+      if (err) {
+        console.log('Error fetching Languages from asyncstorage ', err);
+      } else {
+        console.log('No language is set, choosing English as fallback');
+      }
+      callback('en'); // Varsayılan olarak 'en' dilini döndür
+      return;
     }
-    const findBestAvailableLanguage = RNLocalize.findBestAvailableLanguage(LANG_CODES);
-    callback(findBestAvailableLanguage.languageTag || 'tr');
-    return;
-   }
-   callback(language);
+    callback(language);
   });
- },
+},
  init: () => {},
  cacheUserLanguage: language => {
   AsyncStorage.setItem('user-language', language);
@@ -49,3 +49,4 @@ i18n
    escapeValue: false,
   },
  });
+ 

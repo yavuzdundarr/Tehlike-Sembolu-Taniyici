@@ -32,9 +32,6 @@ const [sesAcik, setSesAcik] = useState(true)
   };
 
 
-
-
-
     const { t, i18n } = useTranslation();
     const selectLanguageCode = i18n.language;
   
@@ -50,9 +47,6 @@ const [sesAcik, setSesAcik] = useState(true)
     }
 
 
-
-
-
     return(
         
         <ImageBackground source={localimage}  style={styles.image}>
@@ -63,12 +57,15 @@ const [sesAcik, setSesAcik] = useState(true)
             start={{x: 0.5, y: 0 }}
             end={{x: 0.5, y: 1}}
      />
+
             <Text style={styles.textayarlar}>{t('common:ayarlar')} </Text> 
+
+            <Text style={styles.textdilsecin}>{t('common:dilsecin')} </Text> 
             {LANGUAGES.map((language)=>{
               const selecetedLanguage = language.code === selectLanguageCode; 
                 return (
                 <Pressable 
-                style={{ Margintop: 10  }}
+                style={{ top: 40  }}
                 disabled={selecetedLanguage}
                 onPress={() => setLanguage(language.code)}
                 key={language.code}             
@@ -78,14 +75,19 @@ const [sesAcik, setSesAcik] = useState(true)
                  );
                  })} 
 
-    
-<Switch
-      value={sesAcik}
-      onValueChange={toggleSes}
-    />
-     
+              <View style={styles.buttonstyle}>
+                <Text style={styles.textbuton}>{t('common:butonses')} </Text>
+                  <Switch
+                      trackColor={{false: '#767577', true: '#81b0ff'}}
+                      thumbColor={sesAcik ? '#f5dd4b' : '#f4f3f4'}
+                      value={sesAcik}
+                      onValueChange={toggleSes}
+                         />
+               </View>
 
-        </View>
+               <Text style={styles.textayarlaraciklama}>{t('common:ayarlaraciklama')} </Text>
+
+       </View>
         </ImageBackground>
     )
     };
@@ -103,15 +105,36 @@ const styles = StyleSheet.create({
     textayarlar: {
         textAlign: 'center',
         textAlignVertical: 'center',
-        fontSize: 20,
+        fontSize: 40,
         top: 10,
     },
+    textdilsecin: {
+      textAlign: 'center',
+      textAlignVertical: 'center',
+      fontSize: 20,
+      top: 40,
+      fontWeight: 'bold',
+  },
     ceviri: {
         textAlign: 'center',
         textAlignVertical: 'center',
         fontSize: 20,
-        top: 10,
     },
+    buttonstyle: {
+      marginTop: 100,
+      alignItems: 'center',  
+    },
+    textbuton: {
+      textAlign: 'center',
+      textAlignVertical: 'center',
+      fontSize: 20,
+      fontWeight: 'bold',
+  },
+  textayarlaraciklama: {
+    textAlign: 'left',
+    fontSize: 17,
+    marginTop: 90,
+  },
     background: {
         borderRadius:70,
         height: 540,
